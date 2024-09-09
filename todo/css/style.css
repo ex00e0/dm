@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "KanitM";
+    src: url("../fonts/Kanit-Medium.woff");
+}
+body {
+    margin:0;
+    padding: 0;
+    display: grid;
+}
+#body {
+    background-color: #F7F7F7;
+}
+.vh6 {
+    height:6vh;
+    /* background-color: aquamarine; */
+}
+.vh2_3 {
+    height:2.3vh;
+    /* background-color: aquamarine; */
+}
+.headline {
+    font-family: "KanitM";
+    font-size: 1.85vmax;
+    color:#252525;
+    text-align: center;
+}
+.searchRow {
+    width:53.5%;
+    height:5.3vh;
+    /* background-color: aqua; */
+    justify-self: center;
+    display:grid;
+    grid-template-columns: 73% 6.3% 2.3% 11.3% 2.2% 1fr;
+    grid-template-rows: 100%;
+}
+.searchInput {
+    border: 0.11vmax solid #6C63FF;
+    padding-left: 2.2%;
+    border-radius: 0.5vmax;
+    outline:none;
+    font-size:1.18vmax;
+    font-weight: 500;
+    color:#252525;
+    grid-column:1/3;
+    grid-row:1;
+}
+.searchInput::placeholder {
+    color:#C3C1E5;
+}
+.searchIcon {
+    grid-column:2;
+    grid-row:1;
+    justify-self: center;
+    height:1.6vmax;
+    align-self:center;
+}
+.violet {
+    background-color: #6C63FF;
+    color:#F7F7F7;
+    font-family: "KanitM";
+    font-size:1.4vmax;
+    border-radius: 0.5vmax;
+}
+#filter {
+    grid-column:4;
+    outline:none;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#theme {
+    grid-column: 6;
+    display:grid;
+}
+#theme svg {
+    height:1.6vmax;
+    align-self:center;
+    justify-self: center;
+}
