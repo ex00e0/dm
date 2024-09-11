@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="body">
-    <div class="vh6"></div>
+    <div class="vh8"></div>
     <div class="headline">TODO LIST</div>
     <div class="vh2_3"></div>
     <div class="searchRow">
