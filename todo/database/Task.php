@@ -9,10 +9,15 @@ class Task extends Connect {
     public function add_task($title, $description) {
         if (mb_strlen($title) > 35) {
             $this->error_valid = true;
-            $this->error_valid_text["title"] = 'Введите заголовок до 35 символов';
         }
 
-        echo $description;
+        if (!$this->error_valid) {
+            return 'Задача добавлена';
+        }
+        else {
+            return 'Введите заголовок до 35 символов';
+            // header("Location: ../.php");
+        }
 
     }
 

@@ -12,13 +12,15 @@ $("#modal").submit(function (e) { // Устанавливаем событие �
      var form_data = $(this).serialize(); // Собираем все данные из формы
      $.ajax({
          type: "POST", // Метод отправки
-         url: "../user/add.php", // Путь до php файла отправителя
+         url: "user/add.php", // Путь до php файла отправителя
          data: form_data,
-         success: function () {
+         success: function (html) {
              
              document.getElementById("shadow").style.display = "none";
              document.getElementById("modal").style.display = "none";
              $('#modal'). trigger('reset');
+             $("#ajax").html(html);
+            //  session_start();
             //  alert("Задача добавлена!");
          }
      });

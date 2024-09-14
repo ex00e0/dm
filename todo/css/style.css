@@ -317,3 +317,15 @@ body {
     justify-self: center;
     width:45%;
 }
+
+#mess {
+    position: absolute;
+    top:5%;
+    left:0;
+    /* font-family: "KanitM"; */
+    font-size:1.1vmax;
+    border-radius: 0.5vmax;
+    width: 10vmax;
+    text-align: center;
+    background-color: ;
+}

@@ -1,5 +1,9 @@
 <?php require "header.php"; 
-if (!isset($_SESSION['user'])) {header ("Location: index.php"); } ?>
+
+if (!isset($_SESSION['user'])) {header ("Location: index.php"); }
+else {
+    unset($_SESSION['mess']);
+} ?>
 <body id="body">
     <div class="vh8 exit_grid">
         <a href='user/exit.php' class="inputSubmitModal w10 exit">ВЫЙТИ</a>
@@ -54,6 +58,10 @@ if (!isset($_SESSION['user'])) {header ("Location: index.php"); } ?>
          <input type="submit" class="r7 c2 inputSubmitModal w32" value="СОХРАНИТЬ">
          <div class="r7 c2 cancelModal" id="cancel"><div>ОТМЕНА</div></div>
     </form>
+
+<div id="ajax"></div>
+
 <script src="js/script.js"></script>
+
 </body>
 </html>
