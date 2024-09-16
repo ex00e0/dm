@@ -233,7 +233,7 @@ body {
     height:200%;
     border: 0.11vmax solid #6C63FF;
     background-color: #F7F7F7;
-    color: #C3C1E5;
+    color: #252525;
     font-size:1.2vmax;
     border-radius: 0.5vmax;
     padding-left: 2.7%;
@@ -252,7 +252,7 @@ body {
     text-align: center;
     line-height: 225%;
 }
-.modal_block input::placeholder, .modal_block_new input::placeholder {
+.modal_block input::placeholder, .modal_block_new input::placeholder, .modal_block_new textarea::placeholder {
     color:#C3C1E5;
 }
 .one_note_block {
@@ -286,11 +286,31 @@ body {
     border: 0.11vmax solid #6C63FF;
     height:1.6vmax;
     width:1.6vmax;
+    border-radius: 0.1vmax;
+}
+.done {
+    border: 0.11vmax solid #6C63FF;
+    background-color: #6C63FF;
+    height:1.6vmax;
+    width:1.6vmax;
+    border-radius: 0.1vmax;
+    display:grid;
+    align-items: center;
+    justify-items: center;
+}
+.done svg {
+    height:1vmax;
 }
 .not_done_note {
     font-family: "KanitM";
     font-size: 1.25vmax;
     color:#252525;
+}
+.done_note {
+    font-family: "KanitM";
+    font-size: 1.25vmax;
+    color:rgba(37, 37, 37, 0.5);
+    text-decoration:line-through;
 }
 .one_note_block svg {
     justify-self: center;
@@ -317,15 +337,6 @@ body {
     justify-self: center;
     width:45%;
 }
-
-#mess {
-    position: absolute;
-    top:5%;
-    left:0;
-    /* font-family: "KanitM"; */
-    font-size:1.1vmax;
-    border-radius: 0.5vmax;
-    width: 10vmax;
-    text-align: center;
-    background-color: ;
+#main {
+    justify-self: center;
 }

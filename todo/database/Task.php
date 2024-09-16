@@ -12,14 +12,42 @@ class Task extends Connect {
         }
 
         if (!$this->error_valid) {
+            if ($description == '') {
+                $query = $this->connection->query("INSERT INTO `tasks`(`user_id`, `title`) VALUES ('".$_SESSION['user']."','$title')");
+            }
+            else {
+                 $query = $this->connection->query("INSERT INTO `tasks`(`user_id`, `title`, `description`) VALUES ('".$_SESSION['user']."','$title','$description')");
+            }
+           
             return 'Задача добавлена';
         }
         else {
             return 'Введите заголовок до 35 символов';
-            // header("Location: ../.php");
         }
 
     }
+
+    public function get_tasks ($search, $filter) {
+        $query = "SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']."";
+        if ($search != NULL) {
+            $query.= "AND title LIKE '%$search%'";
+        }
+        if ($filter != NULL) {
+            $query.= "AND is_completed == '$filter'";
+        }
+
+        $tasks = $this->connection->query($query)->fetch_all();
+        return $tasks;
+    } 
+
+    public function change_task ($id, $checkbox) {
+        if ($checkbox == "true") {
+            $query = $this->connection->query("UPDATE tasks SET is_completed = 'false' WHERE id = $id ");
+        }
+        else if ($checkbox == "false") {
+            $query = $this->connection->query("UPDATE tasks SET is_completed = 'true' WHERE id = $id ");
+        }
+    } 
 
     // public function edit_task() {
     //     $update = "UPDATE tasks SET ";

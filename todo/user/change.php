@@ -2,12 +2,13 @@
 require "../database/Task.php";
 
 $task = new Task;
-$task = $task -> add_task($_POST['title'], $_POST['description']);
+$task = $task -> change_task($_POST['id'], $_POST['checkbox']);
 
 // echo "dsfsd";
 // echo "<div>$task</div>";
 ?>
-<div id="mess" style="position: absolute;
+<div id="mess"></div> 
+<!--  style="position: absolute;
     top:23.5%;
     left:0;
     font-size:1vmax;
@@ -21,4 +22,4 @@ $task = $task -> add_task($_POST['title'], $_POST['description']);
     font-family: 'KanitM';
     text-transform: uppercase;
     transition: all 1s ease-out;
-    background-color:  rgba(108,99,255, 0.6); "><div><?=$task?></div></div>
+    background-color:  rgba(108,99,255, 0.6); "><div><?=$task?></div>-->
