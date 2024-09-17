@@ -1,15 +1,15 @@
 <?php 
 require "../database/Task.php";
 $task_mess = new Task;
-
-$task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
+// var_dump($_POST);
+$task_mess = $task_mess -> delete_task($_POST['delete']);
 
 
 ?>
 
 <?php 
     $tasks = new Task;
-    if (isset($_POST['filter']) and $_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
+    if ($_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
     if (isset($_POST['search']) and isset($_POST['filter'])) {
         $tasks = $tasks->get_tasks($_POST['search'], $_POST['filter']);
     }

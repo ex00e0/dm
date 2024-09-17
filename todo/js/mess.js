@@ -1,4 +1,4 @@
 function func () {
     document.getElementById("mess").style.left = "-20%";
 }
-document.addEventListener("DOMContentLoaded", setInterval(func, 5000));
+document.addEventListener("DOMContentLoaded", function n () { setInterval(func, 4000); });

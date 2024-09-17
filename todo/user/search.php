@@ -1,13 +1,9 @@
 <?php 
 require "../database/Task.php";
-$task_mess = new Task;
-
-$task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
-
-
 ?>
 
 <?php 
+
     $tasks = new Task;
     if (isset($_POST['filter']) and $_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
     if (isset($_POST['search']) and isset($_POST['filter'])) {
@@ -84,7 +80,7 @@ $task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
   
     <?php
     } ?>
-<div id="mess" style="position: absolute;
+<!-- <div id="mess" style="position: absolute;
     top:23.5%;
     left:0;
     font-size:1vmax;
@@ -98,6 +94,7 @@ $task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
     font-family: 'KanitM';
     text-transform: uppercase;
     transition: all 1s ease-out;
-    background-color:  rgba(108,99,255, 0.6); "><div><?=$task_mess?></div></div>
+    background-color:  rgba(108,99,255, 0.6); "><div><?=$task_mess?></div>
+    </div> -->
 <script src="js/mess.js"></script>
 <script src="js/script.js"></script>

@@ -1,12 +1,10 @@
+
 <?php 
-require "../database/Task.php";
-$task_mess = new Task;
-
-$task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
-
-
+   
+   require "../database/Task.php";
+   $task_class = new Task;
+    $task_mess =  $task_class->edit_task($_POST['title'], $_POST['description'], $_POST['id']);
 ?>
-
 <?php 
     $tasks = new Task;
     if (isset($_POST['filter']) and $_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
@@ -84,20 +82,20 @@ $task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
   
     <?php
     } ?>
-<div id="mess" style="position: absolute;
-    top:23.5%;
-    left:0;
-    font-size:1vmax;
-    border-radius: 0.5vmax;
-    width: 17vmax;
-    text-align: center;
-    color:#F7F7F7;
-    height:3vmax;
-    display:grid;
-    align-items:center;
-    font-family: 'KanitM';
-    text-transform: uppercase;
-    transition: all 1s ease-out;
-    background-color:  rgba(108,99,255, 0.6); "><div><?=$task_mess?></div></div>
-<script src="js/mess.js"></script>
-<script src="js/script.js"></script>
+   <div id="mess" style="position: absolute;
+       top:23.5%;
+       left:0;
+       font-size:1vmax;
+       border-radius: 0.5vmax;
+       width: 17vmax;
+       text-align: center;
+       color:#F7F7F7;
+       height:3vmax;
+       display:grid;
+       align-items:center;
+       font-family: 'KanitM';
+       text-transform: uppercase;
+       transition: all 1s ease-out;
+       background-color:  rgba(108,99,255, 0.6); "><div><?=$task_mess?></div></div>
+   <script src="js/mess.js"></script>
+   <script src="js/script.js"></script> 

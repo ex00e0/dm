@@ -10,25 +10,48 @@
          <input type="submit" class="r7 c2 inputSubmitModal w50" value="ЗАРЕГИСТРИРОВАТЬСЯ">
          <a class="r7 c2 moveModal" href="index.php">У меня есть аккаунт</a>
     </form>
-    <?php
+    <div id="mess" style="position: absolute;
+    top:23.5%;
+    left:-20%;
+    font-size:1vmax;
+    border-radius: 0.5vmax;
+    width: 17vmax;
+    text-align: center;
+    color:#F7F7F7;
+    height:3vmax;
+    display:grid;
+    align-items:center;
+    font-family: 'KanitM';
+    text-transform: uppercase;
+    transition: all 1s ease-out;
+    background-color:  rgba(108,99,255, 0.6); "><div>
+        <?php
          if (isset($_SESSION['mess'])) {
             if (isset($_SESSION['mess']['login'])) {
-                echo "<script>alert('login!');</script>";
+                $task_mess = $_SESSION['mess']['login'];
+                echo "<script>document.getElementById('mess').style.left = '0%'; </script>";
                 // echo "<script> document.getElementById('messName').innerHTML = '".$_SESSION['mess']['name']."'; </script>";
                 // echo "<script src='js/mess_reg_auth/mess1.js'></script>";
             }
             if (isset($_SESSION['mess']['pass'])) {
-                echo "<script>alert('pass!');</script>";
+                $task_mess = $_SESSION['mess']['pass'];
+                echo "<script>document.getElementById('mess').style.left = '0%'; </script>";
             }
             if (isset($_SESSION['mess']['pass-auth'])) {
-                echo "<script>alert('pass auth!');</script>";
+                $task_mess = $_SESSION['mess']['pass-auth'];
+                echo "<script>document.getElementById('mess').style.left = '0%'; </script>";
             }
             if (isset($_SESSION['mess']['login-auth'])) {
-                echo "<script>alert('login auth!');</script>";
+                $task_mess = $_SESSION['mess']['login-auth'];
+                echo "<script>document.getElementById('mess').style.left = '0%'; </script>";
             }
             unset($_SESSION['mess']);
          }
          
          ?>
+         <?=$task_mess?></div></div>
+    
 </body>
+
+<script src="js/mess.js"></script>
 </html>

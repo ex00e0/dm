@@ -28,14 +28,20 @@ class Task extends Connect {
     }
 
     public function get_tasks ($search, $filter) {
-        $query = "SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']."";
+        $query = "SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']." ";
         if ($search != NULL) {
-            $query.= "AND title LIKE '%$search%'";
+            $query.= "AND title LIKE '%$search%' ";
         }
         if ($filter != NULL) {
-            $query.= "AND is_completed == '$filter'";
+            $query.= "AND is_completed = '$filter' ";
         }
 
+        $tasks = $this->connection->query($query)->fetch_all();
+        return $tasks;
+    } 
+
+    public function get_task ($id) {
+        $query = "SELECT * FROM tasks WHERE id = $id ";
         $tasks = $this->connection->query($query)->fetch_all();
         return $tasks;
     } 
@@ -43,12 +49,39 @@ class Task extends Connect {
     public function change_task ($id, $checkbox) {
         if ($checkbox == "true") {
             $query = $this->connection->query("UPDATE tasks SET is_completed = 'false' WHERE id = $id ");
+            return 'Задача не выполнена';
         }
         else if ($checkbox == "false") {
             $query = $this->connection->query("UPDATE tasks SET is_completed = 'true' WHERE id = $id ");
+            return 'Задача выполнена';
         }
     } 
 
+    public function get_last_id () {
+        $task_id = $this->connection->insert_id;
+        return $task_id;
+    } 
+
+    public function delete_task ($id) {
+            $query = $this->connection->query("DELETE FROM tasks WHERE id = $id ");
+            return "Задача удалена";
+    } 
+
+    public function edit_task($title, $description, $id) {
+        if (mb_strlen($title) > 35) {
+            $this->error_valid = true;
+        }
+
+        if (!$this->error_valid) {
+            $query = $this->connection->query("UPDATE `tasks` SET `title` = '$title', `description` = '$description' WHERE id = $id ");
+           
+            return 'Задача отредактирована';
+        }
+        else {
+            return 'Введите заголовок до 35 символов';
+        }
+
+    }
     // public function edit_task() {
     //     $update = "UPDATE tasks SET ";
     //     $update_check = false;

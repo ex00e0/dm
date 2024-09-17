@@ -141,7 +141,7 @@ body {
 .modal_block_new {
     height:41vh;
     width:35.5%;
-    position:absolute;
+    position:fixed;
     top:40%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -165,7 +165,7 @@ body {
 }
 .dark_body_new {
     background-color: rgba(37, 37, 37, 0.7);
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position:absolute;
     /* z-index: -1; */
