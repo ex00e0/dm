@@ -76,12 +76,12 @@ body {
     text-align: center;
 }
 .searchRow {
-    width:53.5%;
+    width:65%;
     height:5.3vh;
     /* background-color: aqua; */
     justify-self: center;
     display:grid;
-    grid-template-columns: 73% 6.3% 2.3% 11.3% 2.2% 1fr;
+    grid-template-columns: 65% 5.1% 2% 10.3% 2% 4.3% 2% 1fr;
     grid-template-rows: 100%;
 }
 .searchInput {

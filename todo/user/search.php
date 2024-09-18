@@ -22,6 +22,11 @@ require "../database/Task.php";
     $counter = 0;
     if ($count !=0) {
     foreach ($tasks as $task) {
+        ?>
+        <img src="images/Detective-check-footprint 1.svg" class="detective" id="detective" style="display: none; ">
+      <div class="vh2_3" id="vh_empty" style="display: none; "></div>
+      <div class="empty" id="empty" style="display: none; ">Пусто...</div>
+      <?php
         $counter++;
         if ($task[4] == 'false') {
     ?>

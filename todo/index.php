@@ -1,4 +1,5 @@
 <?php require "header.php"; 
+$task_mess = '';
 ?>
 <body id="body">
     <div class="dark_body"></div>

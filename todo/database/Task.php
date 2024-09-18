@@ -87,6 +87,18 @@ class Task extends Connect {
         }
 
     }
+    public function check_task($title, $description, $search, $filter, $task_last_id) {
+
+        $query = "SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']." AND id = $task_last_id ";
+        if ($search != NULL) {
+            $query.= "AND title LIKE '%$search%' ";
+        }
+        if ($filter != NULL) {
+            $query.= "AND is_completed = '$filter' ";
+        }
+        $check = $this->connection->query($query)->num_rows;
+        return $check;
+    }
     // public function edit_task() {
     //     $update = "UPDATE tasks SET ";
     //     $update_check = false;

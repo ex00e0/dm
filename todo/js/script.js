@@ -1,7 +1,12 @@
 
 document.getElementById("plus").addEventListener("click", function () {
     document.getElementById("shadow").style.display = "block";
-    document.getElementById("shadow").style.height = `${document.getElementById("body").scrollHeight}px`;;
+   if ( window.innerHeight > document.getElementById("body").scrollHeight) {
+    document.getElementById("shadow").style.height = `${window.innerHeight}px`;
+   }
+  else {
+    document.getElementById("shadow").style.height = `${document.getElementById("body").scrollHeight}px`;
+  }
     document.getElementById("modal").style.display = "grid";
 });
 
@@ -55,7 +60,6 @@ $("#modal").off('submit').on('submit', function (e) {
 $("#modal_edit").off('submit').on('submit', function (e) { 
     e.preventDefault();
     var form_data = $(this).serialize();
-    // let request_data = $("#search").val();
 
     $.ajax({
         type: "POST",
@@ -179,6 +183,9 @@ $(document).ready(function() {
   var filterAjax = function(){
     let request_data = $("#search").val();
       let request_data2 = $("#filter").val();
+      document.getElementById("filter_val").value = $("#filter").val();
+      document.getElementById("search_val").value = $("#search").val();
+    //   $("#filter_val").val() = 
   
   $.ajax({
       url: 'user/search.php',         /* Куда отправить запрос */
@@ -193,7 +200,9 @@ $(document).ready(function() {
 function sendDelete(id) {
     let request_data = $("#search").val();
     let request_data2 = $("#filter").val();
-            
+    document.getElementById("filter_val").value = $("#filter").val();
+    document.getElementById("search_val").value = $("#search").val();
+
     $.ajax({
         type: "POST", // Метод отправки
         url: "user/delete.php", // Путь до php файла отправителя
