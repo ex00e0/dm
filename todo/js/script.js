@@ -41,6 +41,10 @@ $("#modal").off('submit').on('submit', function (e) {
         success: function (html) {
             document.getElementById("shadow").style.display = "none";
             document.getElementById("modal").style.display = "none";
+            document.getElementById("detective").style.display = "none";
+            document.getElementById("empty").style.display = "none";
+            document.getElementById("vh_empty").style.display = "none";
+           
             $('#modal').trigger('reset');
             $("#main").append(html);
             setInterval(func, 4000);

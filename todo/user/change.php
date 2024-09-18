@@ -24,6 +24,7 @@ $task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
     }
     $count = count($tasks);
     $counter = 0;
+    if ($count !=0) {
     foreach ($tasks as $task) {
         $counter++;
         if ($task[4] == 'false') {
@@ -81,7 +82,12 @@ $task_mess = $task_mess -> change_task($_POST['form'][0], $_POST['form'][1]);
     <?php
     }
     ?>
-  
+   <?php
+    } } else {
+    ?>
+    <img src="images/Detective-check-footprint 1.svg" class="detective" id="detective">
+    <div class="vh2_3" id="vh_empty"></div>
+    <div class="empty" id="empty">Пусто...</div>
     <?php
     } ?>
 <div id="mess" style="position: absolute;

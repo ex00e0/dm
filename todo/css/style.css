@@ -339,4 +339,15 @@ body {
 }
 #main {
     justify-self: center;
+    display: grid;
+}
+#detective {
+    justify-self: center;
+    height: 15vmax;
+}
+#empty {
+   text-align: center;
+    color: #252525;
+    font-family: "KanitM";
+    font-size:1.1vmax;
 }

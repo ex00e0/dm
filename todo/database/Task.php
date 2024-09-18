@@ -62,6 +62,11 @@ class Task extends Connect {
         return $task_id;
     } 
 
+    public function get_count () {
+        $task_id = $this->connection->query("SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']." ")->num_rows;
+        return $task_id;
+    } 
+
     public function delete_task ($id) {
             $query = $this->connection->query("DELETE FROM tasks WHERE id = $id ");
             return "Задача удалена";

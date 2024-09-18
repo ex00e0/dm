@@ -45,6 +45,7 @@ else {
     }
     $count = count($tasks);
     $counter = 0;
+    if ($count !=0) {
     foreach ($tasks as $task) {
         $counter++;
         if ($task[4] == 'false') {
@@ -103,6 +104,12 @@ else {
     }
     ?>
   
+    <?php
+    } } else {
+    ?>
+    <img src="images/Detective-check-footprint 1.svg" class="detective" id="detective">
+    <div class="vh2_3" id="vh_empty"></div>
+    <div class="empty" id="empty">Пусто...</div>
     <?php
     } ?>
     </main>

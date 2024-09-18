@@ -8,8 +8,12 @@ if (isset($_POST['title']) && isset($_POST['description'])) {
     $task_class = new Task;
    $task_mess =  $task_class->add_task($_POST['title'], $_POST['description']);
     $task_last_id = $task_class->get_last_id();
-  
-   echo "<div class='line'></div>
+    $count = $task_class->get_count();
+    if ($count != 1) {
+        echo "<div class='line'></div>";
+    }
+    
+   echo "
     <div class='one_note_block'>
         <form class='not_done'> 
             <input type='hidden' value='$task_last_id' name='id'>
