@@ -28,7 +28,8 @@ else {
         <select class="violet" id="sort" name="sort">
             <option value="created_at ASC">СНАЧАЛА СТАРЫЕ</option>
             <option value="created_at DESC">СНАЧАЛА НОВЫЕ</option>
-            <option value="false">⊠</option>
+            <option value="is_completed ASC">СНАЧАЛА ☑</option>
+            <option value="is_completed DESC">СНАЧАЛА ⊠</option>
         </select>
     </div>
     <div class="vh3_3"></div>
@@ -36,18 +37,13 @@ else {
     <?php 
     $tasks = new Task;
     if (isset($_POST['filter']) and $_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
-    if (isset($_POST['search']) and isset($_POST['filter'])) {
-        $tasks = $tasks->get_tasks($_POST['search'], $_POST['filter']);
-    }
-    else if (isset($_POST['search'])) { 
-        $tasks = $tasks->get_tasks($_POST['search'], NULL);
-    }
-    else if (isset($_POST['filter'])) {
-        $tasks = $tasks->get_tasks(NULL, $_POST['filter']);
-    }
-    else {
-        $tasks = $tasks->get_tasks(NULL, NULL);
-    }
+
+    if (!isset($_POST['filter'])) {$_POST['filter'] = NULL;}
+    if (!isset($_POST['sort'])) {$_POST['sort'] = NULL;}
+    if (!isset($_POST['search'])) {$_POST['search'] = NULL;}
+
+    $tasks = $tasks->get_tasks($_POST['search'], $_POST['filter'], $_POST['sort']);
+  
     $count = count($tasks);
     $counter = 0;
     if ($count !=0) {
@@ -136,6 +132,7 @@ else {
          <div class="headline r2 c2" id="headline_modal">НОВАЯ ЗАДАЧА</div>
          <input type="hidden" value="<?="<script>$('#search').val()</script>"?>" name="search" id="search_val">
          <input type="hidden" value="<?="<script>$('#filter').val()</script>"?>" name="filter" id="filter_val">
+         <input type="hidden" value="<?="<script>$('#sort').val()</script>"?>" name="sort" id="sort_val">
          <input class="r3 c2 inputTextModal" placeholder="Введите заголовок задачи..." name="title" required>
          <textarea class="r5 c2 textarea" name="description" placeholder="Введите описание задачи..."></textarea>
          <input type="submit" class="r7 c2 inputSubmitModal w32" value="СОХРАНИТЬ">

@@ -16,6 +16,7 @@ document.getElementById("cancel").addEventListener("click", function () {
     document.getElementById("modal").style.display = "none";
 });
 
+
 // $("#modal").off('submit').on('submit', function (e) { 
 //     e.preventDefault();
 //     var form_data = $(this).serialize();
@@ -98,7 +99,10 @@ Object.keys(document.getElementsByClassName("done")).forEach(function(item, inde
     document.getElementsByClassName("done")[item].addEventListener("click", function sendAjax () {
         let request_data = $("#search").val();
         let request_data2 = $("#filter").val();
-            // alert("submit!");
+        let request_data3 = $("#sort").val();
+        document.getElementById("filter_val").value = $("#filter").val();
+        document.getElementById("search_val").value = $("#search").val();
+        document.getElementById("sort_val").value = $("#sort").val();
     
              var form_data = $(this).serialize();
             
@@ -108,6 +112,7 @@ Object.keys(document.getElementsByClassName("done")).forEach(function(item, inde
                  data: {
                     search: request_data,   
                     filter: request_data2,
+                    sort: request_data3,
                     form: [form_data.slice(form_data.indexOf('id=')+3, form_data.indexOf('&')), form_data.slice(form_data.indexOf('checkbox=')+9)]},
                  success: function (html) {
                
@@ -127,7 +132,12 @@ Object.keys(document.getElementsByClassName("done")).forEach(function(item, inde
     // console.log(document.getElementsByClassName("done")[item]);
     document.getElementsByClassName("not_done")[item].addEventListener("click", function sendAjax2 () {
         let request_data = $("#search").val();
-        let request_data2 = $("#filter").val();
+    let request_data2 = $("#filter").val();
+    let request_data3 = $("#sort").val();
+    document.getElementById("filter_val").value = $("#filter").val();
+    document.getElementById("search_val").value = $("#search").val();
+    document.getElementById("sort_val").value = $("#sort").val();
+        
             // alert("submit!");
     
              var form_data2 = $(this).serialize();
@@ -139,6 +149,7 @@ Object.keys(document.getElementsByClassName("done")).forEach(function(item, inde
                  data: {
                 search: request_data,   
                 filter: request_data2,
+                sort: request_data3,
                 form: [form_data2.slice(form_data2.indexOf('id=')+3, form_data2.indexOf('&')), form_data2.slice(form_data2.indexOf('checkbox=')+9)]},
                  success: function (html) {
                     
@@ -164,12 +175,16 @@ $(document).ready(function() {
 var searchAjax = function(){
     let request_data = $("#search").val();
     let request_data2 = $("#filter").val();
+    let request_data3 = $("#sort").val();
+    document.getElementById("filter_val").value = $("#filter").val();
+    document.getElementById("search_val").value = $("#search").val();
+    document.getElementById("sort_val").value = $("#sort").val();
 
 $.ajax({
     url: 'user/search.php',         /* Куда отправить запрос */
     method: 'post',             /* Метод запроса (post или get) */
     dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
-    data: {search: request_data, filter: request_data2},     /* Данные передаваемые в массиве */
+    data: {search: request_data, filter: request_data2, sort: request_data3},     /* Данные передаваемые в массиве */
     success: function(data){
         $("#main").html(data);
     }
@@ -182,26 +197,56 @@ $(document).ready(function() {
   
   var filterAjax = function(){
     let request_data = $("#search").val();
-      let request_data2 = $("#filter").val();
-      document.getElementById("filter_val").value = $("#filter").val();
-      document.getElementById("search_val").value = $("#search").val();
+    let request_data2 = $("#filter").val();
+    let request_data3 = $("#sort").val();
+    document.getElementById("filter_val").value = $("#filter").val();
+    document.getElementById("search_val").value = $("#search").val();
+    document.getElementById("sort_val").value = $("#sort").val();
+ 
     //   $("#filter_val").val() = 
   
   $.ajax({
       url: 'user/search.php',         /* Куда отправить запрос */
       method: 'post',             /* Метод запроса (post или get) */
       dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
-      data: {search: request_data, filter: request_data2},     /* Данные передаваемые в массиве */
+      data: {search: request_data, filter: request_data2, sort: request_data3},     /* Данные передаваемые в массиве */
+      success: function(data){
+          $("#main").html(data);
+      }
+  }); 
+
+  }
+  $(document).ready(function() {
+    $('#sort').on('change', sortAjax);
+  });
+  
+  var sortAjax = function(){
+    let request_data = $("#search").val();
+      let request_data2 = $("#filter").val();
+      let request_data3 = $("#sort").val();
+      document.getElementById("filter_val").value = $("#filter").val();
+      document.getElementById("search_val").value = $("#search").val();
+      document.getElementById("sort_val").value = $("#sort").val();
+   
+  
+  $.ajax({
+      url: 'user/search.php',         /* Куда отправить запрос */
+      method: 'post',             /* Метод запроса (post или get) */
+      dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+      data: {search: request_data, filter: request_data2, sort: request_data3},     /* Данные передаваемые в массиве */
       success: function(data){
           $("#main").html(data);
       }
   }); 
   }
+
 function sendDelete(id) {
     let request_data = $("#search").val();
-    let request_data2 = $("#filter").val();
-    document.getElementById("filter_val").value = $("#filter").val();
-    document.getElementById("search_val").value = $("#search").val();
+      let request_data2 = $("#filter").val();
+      let request_data3 = $("#sort").val();
+      document.getElementById("filter_val").value = $("#filter").val();
+      document.getElementById("search_val").value = $("#search").val();
+      document.getElementById("sort_val").value = $("#sort").val();
 
     $.ajax({
         type: "POST", // Метод отправки
@@ -209,6 +254,7 @@ function sendDelete(id) {
         data: {
            search: request_data,   
            filter: request_data2,
+           sort: request_data3,
            delete: id},
         success: function (html) {
       
@@ -225,7 +271,8 @@ function sendDelete(id) {
 
 function getEdit(id) {
     let request_data = $("#search").val();
-    let request_data2 = $("#filter").val();
+      let request_data2 = $("#filter").val();
+      let request_data3 = $("#sort").val();
             
     $.ajax({
         type: "POST", // Метод отправки
@@ -233,10 +280,17 @@ function getEdit(id) {
         data: {
             search: request_data,   
             filter: request_data2,
+            sort: request_data3,
             get: id},
         success: function (html) {
             document.getElementById("shadow").style.display = "block";
-            document.getElementById("shadow").style.height = `${document.getElementById("body").scrollHeight}px`;;
+            if ( window.innerHeight > document.getElementById("body").scrollHeight) {
+                document.getElementById("shadow").style.height = `${window.innerHeight}px`;
+               }
+              else {
+                document.getElementById("shadow").style.height = `${document.getElementById("body").scrollHeight}px`;
+              }
+            // document.getElementById("shadow").style.height = `${document.getElementById("body").scrollHeight}px`;;
             
            // document.getElementsByClassName("done")[item].classList.remove('done');
            // document.getElementsByClassName("done")[item].classList.add('not_done');

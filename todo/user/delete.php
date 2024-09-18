@@ -9,19 +9,14 @@ $task_mess = $task_mess -> delete_task($_POST['delete']);
 
 <?php 
     $tasks = new Task;
-    if ($_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
-    if (isset($_POST['search']) and isset($_POST['filter'])) {
-        $tasks = $tasks->get_tasks($_POST['search'], $_POST['filter']);
-    }
-    else if (isset($_POST['search'])) { 
-        $tasks = $tasks->get_tasks($_POST['search'], NULL);
-    }
-    else if (isset($_POST['filter'])) {
-        $tasks = $tasks->get_tasks(NULL, $_POST['filter']);
-    }
-    else {
-        $tasks = $tasks->get_tasks(NULL, NULL);
-    }
+    if (isset($_POST['filter']) and $_POST['filter'] == 'all') {$_POST['filter'] = NULL;}
+
+    if (!isset($_POST['filter'])) {$_POST['filter'] = NULL;}
+    if (!isset($_POST['sort'])) {$_POST['sort'] = NULL;}
+    if (!isset($_POST['search'])) {$_POST['search'] = NULL;}
+
+    $tasks = $tasks->get_tasks($_POST['search'], $_POST['filter'], $_POST['sort']);
+    
     $count = count($tasks);
     $counter = 0;
     if ($count !=0) {

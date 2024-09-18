@@ -81,7 +81,7 @@ body {
     /* background-color: aqua; */
     justify-self: center;
     display:grid;
-    grid-template-columns: 65% 5.1% 2% 10.3% 2% 4.3% 2% 1fr;
+    grid-template-columns: 50% 5.1% 2% 10.3% 2% 1fr 2%  4.3% ;
     grid-template-rows: 100%;
 }
 .searchInput {
@@ -119,8 +119,15 @@ body {
     padding-left: 5%;
     padding-right: 5%;
 }
+#sort {
+    grid-column:6;
+    grid-row:1;
+    outline:none;
+    padding-left: 5%;
+    padding-right: 5%;
+}
 #theme {
-    grid-column: 6;
+    grid-column: 8;
     display:grid;
 }
 #theme svg {

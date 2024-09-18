@@ -27,13 +27,16 @@ class Task extends Connect {
 
     }
 
-    public function get_tasks ($search, $filter) {
+    public function get_tasks ($search, $filter, $sort) {
         $query = "SELECT * FROM tasks WHERE user_id = ".$_SESSION['user']." ";
         if ($search != NULL) {
             $query.= "AND title LIKE '%$search%' ";
         }
         if ($filter != NULL) {
             $query.= "AND is_completed = '$filter' ";
+        }
+        if ($sort != NULL) {
+            $query.= "ORDER BY $sort";
         }
 
         $tasks = $this->connection->query($query)->fetch_all();

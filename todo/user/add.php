@@ -3,15 +3,14 @@
    
 require "../database/Task.php";
 
-// var_dump($_POST);
 if (isset($_POST['title']) && isset($_POST['description'])) {
     $task_class = new Task;
    $task_mess =  $task_class->add_task($_POST['title'], $_POST['description']);
     $task_last_id = $task_class->get_last_id();
     $count = $task_class->get_count();
     $task_check =  $task_class->check_task($_POST['title'], $_POST['description'], $_POST['search'], $_POST['filter'], $task_last_id);
-    var_dump($_POST);
-    var_dump($task_check);
+    // var_dump($_POST);
+    // var_dump($task_check);
     if ($task_check!=0) {
         if ($count != 1) {
             echo "<div class='line'></div>";
