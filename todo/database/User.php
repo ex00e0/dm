@@ -10,10 +10,15 @@ class User extends Connect {
 
         $this->checkEmpty(trim($login), 'login', 'Не введено имя пользователя');
         if (!isset($this->error_valid_text['login'])) {
+            $que_check_reg = $this->connection->query("SELECT * FROM users WHERE username = '$login'")->num_rows;
             if (strlen($login) > 30) {
                 $this->error_valid = true;
                 $this->error_valid_text["login"] = 'Введите имя до 30 символов';
             } 
+            else if ($que_check_reg !=0) {
+                $this->error_valid = true;
+                $this->error_valid_text["login"] = 'Логин занят';
+            }
         }
 
         $this->checkEmpty(trim($pass), 'pass', 'Не введен пароль');
