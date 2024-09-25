@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Погода в Уфе</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Текущая погода в Уфе</h1>
+<button id="c1">Уфа</button>
+<button id="c2">Москва</button>
+<button id="c3">Ижевск</button>
+<button id="c4">Иркутск</button>
+<button id="c5">Томск</button>
+<div id="weather">
+   
+<!-- <p>Загрузка данных...</p> -->
+</div>
+
+<script>
+$('#c1').on('click', function() {
+    
+// Отправляем запрос на сервер для получения погоды
+$.ajax({
+url: 'get_weather.php',
+type: 'GET',
+success: function(data) {
+   
+var weather = JSON.parse(data);
+
+var html = "<p>Температура: " + weather.main.temp + "°C</p>";
+html += "<p>Описание: " + weather.weather[0].description + "</p>";
+html += "<p>Влажность: " + weather.main.humidity + "%</p>";
+$('#weather').html(html);
+},
+error: function() {
+$('#weather').html('<p>Ошибка при получении данных</p>');
+}
+});
+});
+
+$('#c2').on('click', function() {
+    
+    // Отправляем запрос на сервер для получения погоды
+    $.ajax({
+    url: 'get_2.php',
+    type: 'GET',
+    success: function(data) {
+       
+    var weather = JSON.parse(data);
+    
+    var html = "<p>Температура: " + weather.main.temp + "°C</p>";
+    html += "<p>Описание: " + weather.weather[0].description + "</p>";
+    html += "<p>Влажность: " + weather.main.humidity + "%</p>";
+    $('#weather').html(html);
+    },
+    error: function() {
+    $('#weather').html('<p>Ошибка при получении данных</p>');
+    }
+    });
+    });
+
+    $('#c3').on('click', function() {
+    
+    // Отправляем запрос на сервер для получения погоды
+    $.ajax({
+    url: 'get_3.php',
+    type: 'GET',
+    success: function(data) {
+       
+    var weather = JSON.parse(data);
+    
+    var html = "<p>Температура: " + weather.main.temp + "°C</p>";
+    html += "<p>Описание: " + weather.weather[0].description + "</p>";
+    html += "<p>Влажность: " + weather.main.humidity + "%</p>";
+    $('#weather').html(html);
+    },
+    error: function() {
+    $('#weather').html('<p>Ошибка при получении данных</p>');
+    }
+    });
+    });
+
+    $('#c4').on('click', function() {
+    
+    // Отправляем запрос на сервер для получения погоды
+    $.ajax({
+    url: 'get_4.php',
+    type: 'GET',
+    success: function(data) {
+       
+    var weather = JSON.parse(data);
+    
+    var html = "<p>Температура: " + weather.main.temp + "°C</p>";
+    html += "<p>Описание: " + weather.weather[0].description + "</p>";
+    html += "<p>Влажность: " + weather.main.humidity + "%</p>";
+    $('#weather').html(html);
+    },
+    error: function() {
+    $('#weather').html('<p>Ошибка при получении данных</p>');
+    }
+    });
+    });
+
+    $('#c5').on('click', function() {
+    
+    // Отправляем запрос на сервер для получения погоды
+    $.ajax({
+    url: 'get_5.php',
+    type: 'GET',
+    success: function(data) {
+       
+    var weather = JSON.parse(data);
+    
+    var html = "<p>Температура: " + weather.main.temp + "°C</p>";
+    html += "<p>Описание: " + weather.weather[0].description + "</p>";
+    html += "<p>Влажность: " + weather.main.humidity + "%</p>";
+    $('#weather').html(html);
+    },
+    error: function() {
+    $('#weather').html('<p>Ошибка при получении данных</p>');
+    }
+    });
+    });
+</script>
+</body>
+</html>
